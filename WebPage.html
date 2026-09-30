@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Shop</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 480px; margin: 30px auto; }
+    h1 { color: #1F2A44; }
+    section { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 6px; }
+    input, button { padding: 8px; margin: 5px 0; }
+    #msg, #regMsg { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Welcom to Mini Shop</h1>
+
+  <!-- Login -->
+  <section>
+    <h3>Login</h3>
+    <input id="user" placeholder="Username"><br>
+    <input id="pass" type="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="msg"></p>
+  </section>
+
+  <!-- Order total -->
+  <section>
+    <h3>Order Total</h3>
+    Price: Rs. 100 per item<br>
+    Quantity: <input id="qty" type="number" value="1" style="width:60px">
+    <button onclick="calcTotal()">Calculate</button>
+    <p id="total"></p>
+  </section>
+
+  <!-- Register -->
+  <section>
+    <h3>Register</h3>
+    <input id="email" placeholder="Email"><br>
+    <button onclick="register()">Register</button>
+    <p id="regMsg"></p>
+  </section>
+
+  <script>
+    // Correct login is: admin / 1234
+    function login() {
+      var u = document.getElementById("user").value;
+      var p = document.getElementById("pass").value;
+      var msg = document.getElementById("msg");
+      if (u === "admin" && p === "1234") {
+        msg.style.color = "green";
+        msg.innerText = "Login successful";
+      }
+      // BUG 1: nothing happens when the password is wrong (no error message)
+    }
+
+    function calcTotal() {
+      var q = parseInt(document.getElementById("qty").valu
